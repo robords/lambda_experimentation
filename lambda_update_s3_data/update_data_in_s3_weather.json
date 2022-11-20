@@ -1,0 +1,32 @@
+{
+  "name" : "update_data_in_s3_weather",
+  "description" : "",
+  "role" : "arn:aws:iam::669437599565:role/service-role/AWSGlueServiceRole-robords-s3-glue",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "pythonshell",
+    "scriptLocation" : "s3://aws-glue-assets-669437599565-us-east-1/scripts/update_data_in_s3_weather.py",
+    "pythonVersion" : "3.9"
+  },
+  "defaultArguments" : {
+    "--enable-job-insights" : "false",
+    "--job-language" : "python",
+    "--TempDir" : "s3://aws-glue-assets-669437599565-us-east-1/temporary/",
+    "--enable-glue-datacatalog" : "true",
+    "library-set" : "analytics"
+  },
+  "maxRetries" : 2,
+  "allocatedCapacity" : 0,
+  "timeout" : 2880,
+  "maxCapacity" : 1.0,
+  "glueVersion" : "3.0",
+  "executionClass" : "STANDARD",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "weather_predictions_with_aws",
+    "branch" : "main",
+    "folder" : "lambda_update_s3_data"
+  }
+}
